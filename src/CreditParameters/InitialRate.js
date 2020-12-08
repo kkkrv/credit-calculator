@@ -1,7 +1,7 @@
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import React, {Component} from "react";
-import './CreditParameters.css';
+import './CreditParameters.css'
 import '../App.css';
 
 class InitialRate extends Component{

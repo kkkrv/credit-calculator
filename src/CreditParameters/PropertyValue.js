@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import React, {Component} from "react";
 import CurrencyInput from "react-currency-input-field";
+import './CreditParameters.css'
 import '../App.css';
 
 

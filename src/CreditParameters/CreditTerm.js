@@ -3,6 +3,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import React, {Component} from "react";
 import Form from "react-bootstrap/Form";
 import '../App.css';
+import './CreditParameters.css'
 import FormGroup from "react-bootstrap/FormGroup";
 
 class CreditTerm extends Component {
