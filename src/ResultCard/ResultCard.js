@@ -10,15 +10,16 @@ class ResultCard extends Component {
 
     calculateCreditBody(initialFee,cost) {
         if (cost && initialFee) {
-            return Math.round((cost - initialFee) * 1000) / 1000;
+            const creditBody = cost - initialFee;
+            return  Math.round((creditBody) * 1000) / 1000;
         }
         return '-';
     }
 
     calculateMonthlyFee(creditBody,rate,term) {
         if (creditBody !== '-' && rate && term) {
-            let IdividedBy1200 = rate / 1200;
-            let monthlyFee = creditBody * (IdividedBy1200 + (IdividedBy1200 / (Math.pow(1 + IdividedBy1200, term) - 1)));
+            let I1200 = rate / 1200;
+            let monthlyFee = creditBody * (I1200 + I1200 / (Math.pow(1 + I1200, (term * 12)) - 1));
 
             let monthlyFeeRounded = Math.round(monthlyFee * 1000) / 1000;
             console.log(`Monthly: ${monthlyFeeRounded}`)
@@ -29,18 +30,20 @@ class ResultCard extends Component {
 
     calculateIncome(monthlyFee) {
         if (monthlyFee !== '-') {
-            let income = Math.round(5 * monthlyFee / 3 * 1000) / 1000;
-            console.log(`Income: ${income}`)
-            return income;
+            const income = 5 * monthlyFee / 3;
+            const incomeRounded = Math.round(income * 1000) / 1000;
+            console.log(`Income: ${incomeRounded}`)
+            return incomeRounded;
         }
         return '-';
     }
 
     calculateOverpayment(monthlyFee,initialFee,term,cost) {
         if (monthlyFee !== '-' && initialFee && term && cost) {
-            let overpayment = Math.round((monthlyFee * term - cost + initialFee) * 1000) / 1000;
-            console.log(`Overpayment ${overpayment}`)
-            return overpayment;
+            const overpayment = monthlyFee * term * 12 - cost + Number(initialFee);
+            const overpaymentRounded = Math.round(overpayment * 1000) / 1000;
+            console.log(`Overpayment ${overpaymentRounded}`)
+            return overpaymentRounded;
         }
         return '-';
     }

@@ -13,8 +13,8 @@ class InitialFee extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(e) {
-        this.props.onInitialFeeValueChange(e);
+    handleChange(newValue) {
+        this.props.onInitialFeeValueChange(newValue);
     }
 
     render() {
