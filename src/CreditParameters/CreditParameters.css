@@ -4,8 +4,6 @@
     box-sizing: border-box;
 }
 
-
-
 .input-group-addon {
     padding: 6px 12px;
     font-size: 14px;
@@ -32,22 +30,22 @@ input {
 }
 
 .suffix input {
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 4px 0 0 4px;
 }
 .suffix .input-group-addon {
     border-left: 0;
-    border-radius: 0px 4px 4px 0px;
+    border-radius: 0 4px 4px 0;
 }
 .prefix input {
-    border-radius: 0px 4px 4px 0px;
+    border-radius: 0 4px 4px 0;
 }
 .prefix .input-group-addon {
     border-right: 0;
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 4px 0 0 4px;
 }
 
 .input-group-addon.suffix {
-    border-radius: 0px 4px 4px 0px;
+    border-radius: 0 4px 4px 0;
     border-left: 0;
 }
 .input-group {

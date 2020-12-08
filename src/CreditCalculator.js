@@ -18,12 +18,12 @@ class CreditCalculator extends Component {
     }
 
     getInitialState = () => ({
-        propertyValue: '',
-        initialFeeValue: '',
+        cost: '',
+        initialFee: '',
         from: '',
         initialFeePercent: '',
-        creditTerm: '',
-        initialRate: ''
+        term: '',
+        rate: ''
     })
 
     resetState = () => {
@@ -31,12 +31,12 @@ class CreditCalculator extends Component {
     }
 
     handlePropertyChange(cost) {
-        this.setState({ propertyValue: Number(cost),
+        this.setState({ cost: Number(cost),
             from: 'v' });
     }
 
     calculateInitialFee() {
-        const cost = this.state.propertyValue;
+        const cost = this.state.cost;
         const initialFeePercent = this.state.initialFeePercent;
         let newInitialFeeValueRounded;
 
@@ -50,12 +50,12 @@ class CreditCalculator extends Component {
     }
 
     handleInitialFeeChange(initialFee) {
-        this.setState({ initialFeeValue: Number(initialFee),
+        this.setState({ initialFee: Number(initialFee),
             from: 'f' });
     }
 
     calculatePropertyValue() {
-        const initialFee = this.state.initialFeeValue;
+        const initialFee = this.state.initialFee;
         const initialFeePercent = this.state.initialFeePercent;
         let newPropertyValueRounded;
         if (initialFee) {
@@ -73,14 +73,14 @@ class CreditCalculator extends Component {
     }
 
     componentDidMount() {
-        const propertyValue = store.get('propertyValue') ;
-        const initialFeeValue = store.get('initialFeeValue');
+        const cost = store.get('cost') ;
+        const initialFee = store.get('initialFee');
         const initialFeePercent = store.get('initialFeePercent');
-        const creditTerm = store.get('creditTerm');
-        const initialRate = store.get('initialRate');
+        const term = store.get('term');
+        const rate = store.get('rate');
         const from = store.get('from');
 
-        this.setState({ propertyValue, initialFeeValue, creditTerm, initialFeePercent, initialRate, from });
+        this.setState({ cost, initialFee, term, initialFeePercent, rate, from });
     }
 
     handleClickOnSave() {
@@ -88,11 +88,11 @@ class CreditCalculator extends Component {
 
         const setValueAndFee = this.getActualSetOfValueAndFee();
 
-        store.set('propertyValue', setValueAndFee.propertyValue);
-        store.set('initialFeeValue', setValueAndFee.initialFeeValue);
+        store.set('cost', setValueAndFee.cost);
+        store.set('initialFee', setValueAndFee.initialFee);
         store.set('initialFeePercent', this.state.initialFeePercent);
-        store.set('creditTerm', this.state.creditTerm);
-        store.set('initialRate', this.state.initialRate);
+        store.set('term', this.state.term);
+        store.set('rate', this.state.rate);
         store.set('from', this.state.from);
     }
 
@@ -102,24 +102,24 @@ class CreditCalculator extends Component {
         let cost, initialFee;
 
         if ( initialFeePercent ) {
-            initialFee = from === 'v' ? this.calculateInitialFee() : this.state.initialFeeValue;
-            cost = from === 'f' ? this.calculatePropertyValue() : this.state.propertyValue;
+            initialFee = from === 'v' ? this.calculateInitialFee() : this.state.initialFee;
+            cost = from === 'f' ? this.calculatePropertyValue() : this.state.cost;
         } else {
-            initialFee = this.state.initialFeeValue;
-            cost = this.state.propertyValue;
+            initialFee = this.state.initialFee;
+            cost = this.state.cost;
         }
 
-        return ({propertyValue: cost, initialFeeValue: initialFee});
+        return ({cost: cost, initialFee: initialFee});
     }
 
 
     render() {
         const initialFeePercent = this.state.initialFeePercent;
-        const term = this.state.creditTerm;
-        const rate = this.state.initialRate;
+        const term = this.state.term;
+        const rate = this.state.rate;
         const costAndFee = this.getActualSetOfValueAndFee();
-        const initialFee = costAndFee.initialFeeValue;
-        const cost = costAndFee.propertyValue;
+        const initialFee = costAndFee.initialFee;
+        const cost = costAndFee.cost;
 
         return(
             <Row>
@@ -131,8 +131,8 @@ class CreditCalculator extends Component {
                         onPropertyValueChange={ this.handlePropertyChange }
                         onInitialFeeValueChange={ this.handleInitialFeeChange }
                         onInitialFeePercentChange={ this.handleInitialFeePercentChange }
-                        onInitialRateChange={ (value) =>  this.setState({initialRate: Number(value) }) }
-                        onCreditTermChange={ (value) => this.setState({creditTerm: Number(value) }) }
+                        onInitialRateChange={ (value) =>  this.setState({rate: Number(value) }) }
+                        onCreditTermChange={ (value) => this.setState({term: Number(value) }) }
                         term={ term }
                         rate={ rate }
                         onClickSaveButton={ this.handleClickOnSave }

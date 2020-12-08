@@ -2,6 +2,7 @@ import Alert from "react-bootstrap/Alert";
 import React, {Component} from "react";
 
 class CustomAlert extends Component {
+    // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
     }

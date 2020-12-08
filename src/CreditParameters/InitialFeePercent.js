@@ -7,6 +7,7 @@ import '../App.css';
 
 class InitialFeePercent extends Component {
 
+    // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
     }

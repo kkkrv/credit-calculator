@@ -10,6 +10,7 @@ import CustomAlert from "./CustomAlert";
 
 class CreditParameters extends Component {
 
+    // eslint-disable-next-line no-useless-constructor
     constructor(props) {
         super(props);
     }

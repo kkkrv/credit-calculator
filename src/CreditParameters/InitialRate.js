@@ -5,6 +5,7 @@ import './CreditParameters.css';
 import '../App.css';
 
 class InitialRate extends Component{
+
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
